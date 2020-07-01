@@ -25,8 +25,11 @@ const Home = () => {
     }, [slots])
 
     return <div>
+        <div style={{ marginTop: 20 }} />
         <Typography variant="h4" >Time slots</Typography>
+        <div style={{ marginTop: 10 }} />
         <NewTimeSlot />
+        <div style={{ marginTop: 10 }} />
         {
             formattedSlots.map((slot, index) => <AccordionComponent
                 key={index}
