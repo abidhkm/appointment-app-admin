@@ -4,6 +4,7 @@ import { callApi } from '../../utils/api'
 import AccordionComponent from '../../components/accordion';
 import NewTimeSlot from './newTimeSlot';
 import { formatDate } from '../../utils/formatDate';
+import './style.scss';
 
 const Home = () => {
 
@@ -31,12 +32,13 @@ const Home = () => {
         }))
     }, [slots])
 
-    return <div>
-        <div style={{ marginTop: 20 }} />
+    return <div className="home-page" >
+        <div className="margin-10" />
+        <div className="margin-10" />
         <Typography variant="h4" >Time slots</Typography>
-        <div style={{ marginTop: 10 }} />
+        <div className="margin-10" />
         <NewTimeSlot />
-        <div style={{ marginTop: 10 }} />
+        <div className="margin-10" />
         {
             formattedSlots.map((slot, index) => <AccordionComponent
                 key={index}

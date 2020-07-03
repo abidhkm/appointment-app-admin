@@ -7,6 +7,8 @@ import {
 } from "react-router-dom";
 import Home from './containers/home';
 import Appointments from './containers/appointments';
+import './App.css';
+
 
 function App() {
   return (

@@ -3,23 +3,16 @@ import { Typography, Button } from '@material-ui/core'
 import { callApi } from '../../utils/api'
 import AccordionComponent from '../../components/accordion'
 import { formatDate } from '../../utils/formatDate'
+import './style.scss';
 
 const Appointments = () => {
 
     const [pendingRequests, setPendingRequests] = useState([])
     const [confirmedAppointment, setConfirmedAppointment] = useState([])
 
-    // useEffect(() => {
-
-    //     fetchConfirmedAppointments();
-    //     fetchPendingRequests();
-    // }, [])
-
-
     useEffect(() => {
         const fetchPendingRequests = async () => {
             const res = await callApi('get', 'catalog/appointments?status=pending')
-            // console.log(res)
             setPendingRequests(res.data)
         }
         const fetchConfirmedAppointments = async () => {
@@ -65,7 +58,7 @@ const Appointments = () => {
         }
     }
 
-    return <div>
+    return <div className="appointments" >
         <div style={{ marginTop: 20 }} />
         <Typography variant="h4" >Pending requests</Typography>
         <div style={{ marginTop: 10 }} />
@@ -76,11 +69,16 @@ const Appointments = () => {
                     <Typography variant="body1" >{formatDate(req.start)} {' <---> '} {formatDate(req.end)} : requested by {req.user} </Typography>
                 }
                 details={
-                    <>
-                        <Typography variant="body1" > contact: {req.contact}, email: {req.email} </Typography>
-                        <Button onClick={handleRequest('approve', req.id)} >Approve</Button>
-                        <Button onClick={handleRequest('reject', req.id)} >Reject</Button>
-                    </>
+                    <div className="request-details-container" >
+                        <div className="request-details-info" >
+                            <Typography variant="body1" > contact: {req.contact} </Typography>
+                            <Typography variant="body1" >  email: {req.email} </Typography>
+                        </div>
+                        <div className="flex" >
+                            <Button onClick={handleRequest('approve', req.id)} >Approve</Button>
+                            <Button onClick={handleRequest('reject', req.id)} className="reject" >Reject</Button>
+                        </div>
+                    </div>
                 }
             />)
         }
@@ -97,7 +95,10 @@ const Appointments = () => {
                     <Typography variant="body1" >{formatDate(req.start)} {' <---> '} {formatDate(req.end)} : requested by {req.user} </Typography>
                 }
                 details={
-                    <Typography variant="body1" > contact: {req.contact}, email: {req.email} </Typography>
+                    <div className="request-details-info" >
+                        <Typography variant="body1" > contact: {req.contact} </Typography>
+                        <Typography variant="body1" > email: {req.email} </Typography>
+                    </div>
                 }
             />)
         }
