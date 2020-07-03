@@ -23,11 +23,9 @@ const Appointments = () => {
         }
         const fetchConfirmedAppointments = async () => {
             const res = await callApi('get', 'catalog/appointments?status=confirmed')
-            console.log(res, 'confirm')
             setConfirmedAppointment(res.data)
         }
         const interval = setInterval(() => {
-            console.log('This/ will run every second!');
             fetchConfirmedAppointments();
             fetchPendingRequests();
         }, 3000);
@@ -58,7 +56,6 @@ const Appointments = () => {
     }, [confirmedAppointment])
 
     const handleRequest = (decision, requestId) => async () => {
-        console.log(requestId)
         if (decision === "approve") {
             const res = await callApi('put', 'catalog/appointment', { requestId })
         }

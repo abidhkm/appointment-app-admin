@@ -17,7 +17,6 @@ const Home = () => {
             setSlots(res.data)
         }
         const interval = setInterval(() => {
-            console.log('This/ will run every second!');
             fetchTImeSlots();
         }, 3000);
         return () => clearInterval(interval);
