@@ -8,6 +8,13 @@ const Appointments = () => {
     const [pendingRequests, setPendingRequests] = useState([])
     const [confirmedAppointment, setConfirmedAppointment] = useState([])
 
+    // useEffect(() => {
+
+    //     fetchConfirmedAppointments();
+    //     fetchPendingRequests();
+    // }, [])
+
+
     useEffect(() => {
         const fetchPendingRequests = async () => {
             const res = await callApi('get', 'catalog/appointments?status=pending')
@@ -19,10 +26,13 @@ const Appointments = () => {
             console.log(res, 'confirm')
             setConfirmedAppointment(res.data)
         }
-
-        fetchConfirmedAppointments();
-        fetchPendingRequests();
-    }, [])
+        const interval = setInterval(() => {
+            console.log('This/ will run every second!');
+            fetchConfirmedAppointments();
+            fetchPendingRequests();
+        }, 3000);
+        return () => clearInterval(interval);
+    }, []);
 
 
     const formattedRequests = useMemo(() => {

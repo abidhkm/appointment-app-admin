@@ -8,13 +8,20 @@ const Home = () => {
 
     const [slots, setSlots] = useState([]);
 
+    // useEffect(() => {
+    // }, [])
+
     useEffect(() => {
         const fetchTImeSlots = async () => {
             const res = await callApi('get', 'catalog/slots')
             setSlots(res.data)
         }
-        fetchTImeSlots();
-    }, [])
+        const interval = setInterval(() => {
+            console.log('This/ will run every second!');
+            fetchTImeSlots();
+        }, 3000);
+        return () => clearInterval(interval);
+    }, []);
 
     const formattedSlots = useMemo(() => {
         return slots.map(({ start, end }) => ({
