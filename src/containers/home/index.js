@@ -3,6 +3,7 @@ import { Typography, Button } from '@material-ui/core'
 import { callApi } from '../../utils/api'
 import AccordionComponent from '../../components/accordion';
 import NewTimeSlot from './newTimeSlot';
+import { formatDate } from '../../utils/formatDate';
 
 const Home = () => {
 
@@ -40,7 +41,7 @@ const Home = () => {
             formattedSlots.map((slot, index) => <AccordionComponent
                 key={index}
                 summary={
-                    <Typography variant="body1" >{slot.start} {' - '} ${slot.end} </Typography>
+                    <Typography variant="body1" >{formatDate(slot.start)} {' <---> '} {formatDate(slot.end)} </Typography>
                 }
                 details={
                     <Typography variant="body1" > more details </Typography>

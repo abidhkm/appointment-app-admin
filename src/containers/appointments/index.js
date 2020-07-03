@@ -2,6 +2,7 @@ import React, { useEffect, useState, useMemo } from 'react'
 import { Typography, Button } from '@material-ui/core'
 import { callApi } from '../../utils/api'
 import AccordionComponent from '../../components/accordion'
+import { formatDate } from '../../utils/formatDate'
 
 const Appointments = () => {
 
@@ -72,7 +73,7 @@ const Appointments = () => {
             formattedRequests.map((req, index) => <AccordionComponent
                 key={index}
                 summary={
-                    <Typography variant="body1" >{req.start} {' - '} ${req.end} : requested by {req.user} </Typography>
+                    <Typography variant="body1" >{formatDate(req.start)} {' <---> '} {formatDate(req.end)} : requested by {req.user} </Typography>
                 }
                 details={
                     <>
@@ -93,7 +94,7 @@ const Appointments = () => {
             formattedAppointments.map((req, index) => <AccordionComponent
                 key={index}
                 summary={
-                    <Typography variant="body1" >{req.start} {' - '} ${req.end} : requested by {req.user} </Typography>
+                    <Typography variant="body1" >{formatDate(req.start)} {' <---> '} {formatDate(req.end)} : requested by {req.user} </Typography>
                 }
                 details={
                     <Typography variant="body1" > contact: {req.contact}, email: {req.email} </Typography>
