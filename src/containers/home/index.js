@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useMemo } from 'react'
-import { Typography, Button } from '@material-ui/core'
+import { Typography } from '@material-ui/core'
 import { callApi } from '../../utils/api'
 import AccordionComponent from '../../components/accordion';
 import NewTimeSlot from './newTimeSlot';

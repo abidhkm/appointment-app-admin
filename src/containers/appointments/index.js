@@ -51,10 +51,10 @@ const Appointments = () => {
 
     const handleRequest = (decision, requestId) => async () => {
         if (decision === "approve") {
-            const res = await callApi('put', 'catalog/appointment', { requestId })
+            await callApi('put', 'catalog/appointment', { requestId })
         }
         else {
-            const res = await callApi('delete', `catalog/appointment?requestId=${requestId}`)
+            await callApi('delete', `catalog/appointment?requestId=${requestId}`)
         }
     }
 
