@@ -29,22 +29,22 @@ const Appointments = () => {
 
     const formattedRequests = useMemo(() => {
         return pendingRequests.map(req => ({
-            start: req.slot.start,
-            end: req.slot.end,
-            user: req.buyer.user.name,
-            contact: req.buyer.user.contact,
-            email: req.buyer.user.email,
+            start: req.timeslot.start,
+            end: req.timeslot.end,
+            user: req.user.name,
+            contact: req.user.contact,
+            email: req.user.email,
             id: req._id
         }))
     }, [pendingRequests])
 
     const formattedAppointments = useMemo(() => {
         return confirmedAppointment.map(req => ({
-            start: req.slot.start,
-            end: req.slot.end,
-            user: req.buyer.user.name,
-            contact: req.buyer.user.contact,
-            email: req.buyer.user.email,
+            start: req.timeslot.start,
+            end: req.timeslot.end,
+            user: req.user.name,
+            contact: req.user.contact,
+            email: req.user.email,
             id: req._id
         }))
     }, [confirmedAppointment])
